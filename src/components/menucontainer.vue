@@ -1,54 +1,25 @@
 <template>
-  <ion-menu side="start" menu-id="first" content-id="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
 
-  <ion-menu side="start" menu-id="custom" class="my-custom-menu" content-id="main">
+
+  <ion-menu side="start"  content-id="main">
     <ion-header>
       <ion-toolbar color="tertiary">
-        <ion-title>Custom Menu</ion-title>
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
+     
+        <ion-item href="/tab2">
+          
+          <ion-icon :icon="logInOutline" slot="start"></ion-icon>
+          <ion-label>Sign In</ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
 
-  <ion-menu side="end" type="push" content-id="main">
-    <ion-header>
-      <ion-toolbar color="danger">
-        <ion-title>End Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+
 
   <ion-router-outlet id="main"></ion-router-outlet>
 </template>
@@ -68,9 +39,13 @@ import {
   IonRouterOutlet,
   IonTitle, 
   IonToolbar,
-  menuController
+  menuController,
+  IonIcon,
+  
+  IonLabel
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import { logInOutline } from 'ionicons/icons';
 
 export default defineComponent({
     name:'menucontainer',
@@ -82,16 +57,19 @@ export default defineComponent({
     IonMenu, 
     IonRouterOutlet,
     IonTitle, 
-    IonToolbar
+    IonToolbar,
+    IonIcon,
+    
+    IonLabel,
+    
+  },
+   setup() {
+    return {
+      logInOutline
+    }
   },
   methods: {
-    openFirst() {
-      menuController.enable(true, 'first');
-      menuController.open('first');
-    },
-    openEnd() {
-      menuController.open('end');
-    },
+   
     openCustom() {
       menuController.enable(true, 'custom');
       menuController.open('custom');
