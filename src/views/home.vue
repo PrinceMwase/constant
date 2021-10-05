@@ -1,44 +1,24 @@
 <template>
-i
-  <ion-page>
-    
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <ExploreContainer name="Home" />
-      <ion-button  >load sanctum</ion-button>
-      
-      
-    </ion-content>
-  </ion-page>
+  <ion-content
+    :scroll-events="true"
+    @ionScrollStart="logScrollStart()"
+    @ionScroll="logScrolling($event)"
+    @ionScrollEnd="logScrollEnd()">
+   
+
+      <div slot="fixed">
+        <h1>Fixed Content</h1>
+      </div>
+  </ion-content>
 </template>
 
-<script lang="ts">
+<script>
+import { IonContent } from '@ionic/vue';
+import { defineComponent } from 'vue';
 
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
-import axios from 'axios';
-axios.defaults.withCredentials = true;
+export default defineComponent({
+  name:'HomePage',
+  components: { IonContent }
 
-
-axios.get( 'http://127.0.0.1:8000/api/user' )
-    
-
-
-export default  {
-  name: 'home',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton },
-  methods:{
-    sanctum : ()=>{
-      axios.get( 'http://127.0.0.1:8000/sanctum/csrf-cookie', ).then(response => {
-        console.log(response);
-        
-      });
-    }
-  }
-}
+});
 </script>

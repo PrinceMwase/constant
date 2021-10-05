@@ -1,4 +1,5 @@
 <template>
+
   <ion-page>
     <ion-header>
       <ion-toolbar>
@@ -12,23 +13,25 @@
         </ion-toolbar>
       </ion-header>
       
-      <login-Container />
-      
+      <LoginContainer />
+      <ion-router-outlet id="main"></ion-router-outlet>
     </ion-content>
   </ion-page>
+  
 </template>
 
 <script lang="ts">
 
 
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonRouterOutlet, IonTitle, IonContent } from '@ionic/vue';
 import LoginContainer from '@/components/auth/LoginContainer.vue';
 import axios from 'axios';
 
 axios.get( 'http://localhost/sanctum/csrf-cookie', );
                                 
 export default  {
-  name: 'Tab2',
-  components: { LoginContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  name: 'login',
+  components: { LoginContainer, IonHeader, IonToolbar, IonRouterOutlet, IonTitle, IonContent, IonPage }
+
 }
 </script>

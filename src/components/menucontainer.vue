@@ -12,16 +12,15 @@
      
         <ion-item href="/login">
           
-          <ion-icon :icon="logInOutline" slot="start"></ion-icon>
+          <ion-icon :icon="logInOutline" ></ion-icon>
           <ion-label>Sign In</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
 
-
-
   <ion-router-outlet id="main"></ion-router-outlet>
+  
 </template>
 <style>
 .my-custom-menu {
