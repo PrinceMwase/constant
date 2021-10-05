@@ -1,5 +1,15 @@
 <template>
   <ion-page>
+    <ion-header>
+      <ion-toolbar>
+
+      <ion-buttons slot="end">
+        <ion-menu-button />  
+      </ion-buttons>
+      <ion-title>Home</ion-title>
+
+      </ion-toolbar>
+    </ion-header>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
@@ -8,7 +18,7 @@
           <ion-label>Home</ion-label>
         </ion-tab-button>
           
-        <ion-tab-button tab="tab2" href="/tab2">
+        <ion-tab-button tab="tab2" href="/login">
           <ion-icon :icon="ellipse" />
           <ion-label>Tab 2</ion-label>
         </ion-tab-button>
@@ -23,12 +33,12 @@
 </template>
 
 <script lang="ts">
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
+import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet, IonMenuButton, IonButtons, IonTitle, IonToolbar, IonHeader } from '@ionic/vue';
 import { ellipse, square, triangle } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
+  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet, IonMenuButton, IonButtons, IonTitle, IonToolbar, IonHeader },
   setup() {
     return {
       ellipse, 

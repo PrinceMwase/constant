@@ -10,7 +10,7 @@
     <ion-content>
       <ion-list>
      
-        <ion-item href="/tab2">
+        <ion-item href="/login">
           
           <ion-icon :icon="logInOutline" slot="start"></ion-icon>
           <ion-label>Sign In</ion-label>
