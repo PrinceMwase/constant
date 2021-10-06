@@ -1,11 +1,14 @@
+
+
 <template>
+
 <form action="" v-on:submit.prevent>
 
   <ion-grid :fixed='true'>
     <ion-row >
       <ion-col class="ion-align-self-center" size-lg="4" size-md="6" size-sm="8"   >
         <ion-item>
-          <ion-input type="email"  required v-model="email" placeholder="Email" ></ion-input>
+          <ion-input type="email"  required  v-model="email" placeholder="Email" ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -25,12 +28,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-  
-
-
-    
 </form>
  
 </template>
@@ -38,23 +35,37 @@
 <script lang="ts">
 import { IonButton, IonInput, IonItem, IonGrid, IonRow, IonCol }  from '@ionic/vue';
 
-import { tryLogin } from '@/composables/login';
-
+import axios from "axios";
+axios.get( 'http://localhost/sanctum/csrf-cookie');
 
 export default {
   name: 'LoginContainer',
 
+
+
   
   
   setup(){
-      const { login } = tryLogin();
-      
-
-      return {
-          login,
-         
-      
-      }
+   
+     const login = async ( emails: string , passwords: string )=>{
+        axios.defaults.withCredentials = true;
+        
+        const authentication = await axios.post('http://localhost/api/login', {
+                                    'email' : emails,
+                                    'password' : passwords
+                                }).then( (response) => {
+                                    if (response.status == 200) {
+                                      window.location.pathname = '/account';
+                                      
+                                    }
+                                } );
+                                
+    }
+    return {
+      login,
+     
+    }
+   
   },
   components:{
       IonButton, IonInput, IonItem, IonGrid, IonRow, IonCol 

@@ -3,7 +3,7 @@
     <ion-content>
         <div id="container">
           <p>Welcome To </p>
-          <strong> sitolo </strong>
+          <strong> User Account {{getUser}} </strong>
         </div>
     </ion-content>
   </ion-page>
@@ -13,10 +13,23 @@
 import { IonContent, IonPage } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
+import { useAuthenticatedUser } from '@/composables/useAuthenticatedUser';
+
+
+
 
 export default defineComponent({
-  name: 'HomePage',
-  components: { IonContent, IonPage }
+    name : 'account',
+    components: { IonContent, IonPage },
+
+    setup(){
+      const { getUser } = useAuthenticatedUser
+      return{
+        getUser
+      
+      }
+    }
+
 });
 </script>
 
