@@ -40,29 +40,31 @@ axios.get( 'http://localhost/sanctum/csrf-cookie');
 
 export default {
   name: 'LoginContainer',
-
-
-
-  
-  
-  setup(){
-   
-     const login = async ( emails: string , passwords: string )=>{
+  methods : {
+    goToAccount(){
+      this.$router.push('account')
+    },
+    login ( emails: string , passwords: string ){
         axios.defaults.withCredentials = true;
         
-        const authentication = await axios.post('http://localhost/api/login', {
+        const authentication = axios.post('http://localhost/api/login', {
                                     'email' : emails,
                                     'password' : passwords
-                                }).then( (response) => {
-                                    if (response.status == 200) {
-                                      window.location.pathname = '/account';
-                                      
-                                    }
-                                } );
-                                
+                                }).then( (response) =>{
+                                  if( response.status == 200 ){
+                                    
+                                    
+                                    this.$router.push('account')
+                                  }
+                                } )
     }
+  },
+
+  setup(){
+   
+     
     return {
-      login,
+      
      
     }
    

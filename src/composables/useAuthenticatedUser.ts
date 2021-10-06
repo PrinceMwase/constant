@@ -15,7 +15,8 @@ export function useAuthenticatedUser () {
      */ 
 
     const getUser = async () => {
-        const user = await axios.get('http://localhost/user')
+        
+        const user = await axios.get('http://localhost/api/user')
     };
 
     return {

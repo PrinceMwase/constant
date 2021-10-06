@@ -2,8 +2,8 @@
   <ion-page>
     <ion-content>
         <div id="container">
-          <p>Welcome To </p>
-          <strong> User Account {{getUser}} </strong>
+          <p>Welcome </p>
+          <strong > User Account  {{ user }} </strong>
         </div>
     </ion-content>
   </ion-page>
@@ -11,26 +11,35 @@
 
 <script>
 import { IonContent, IonPage } from '@ionic/vue';
-import { defineComponent } from 'vue';
-
-import { useAuthenticatedUser } from '@/composables/useAuthenticatedUser';
+import axios from 'axios';
 
 
-
-
-export default defineComponent({
+export default {
     name : 'account',
-    components: { IonContent, IonPage },
-
-    setup(){
-      const { getUser } = useAuthenticatedUser
-      return{
-        getUser
-      
+    data(){
+      return {
+        user: String
       }
+    },
+    methods : {
+      async getUser () {
+          
+           await axios.get('http://localhost/api/user').then ( (response) =>{  this.user = response.data.name  })
+
+      },
+    
+
+    },
+    components: { IonContent, IonPage },
+    
+    created(){
+      this.getUser();
+      console.log( this.user );
     }
 
-});
+   
+
+};
 </script>
 
 

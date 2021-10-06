@@ -27,7 +27,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue
 import LoginContainer from '@/components/auth/LoginContainer.vue';
 import axios from 'axios';
 
-
+axios.get( 'http://localhost/sanctum/csrf-cookie');
                                 
 export default  {
   name: 'login',

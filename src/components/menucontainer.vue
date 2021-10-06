@@ -9,9 +9,7 @@
     </ion-header>
     <ion-content>
       <ion-list>
-     
-        <ion-item href="/login">
-          
+        <ion-item button  router-link="/login" router-direction="forward" >
           <ion-icon :icon="logInOutline" ></ion-icon>
           <ion-label>Sign In</ion-label>
         </ion-item>
@@ -20,7 +18,7 @@
   </ion-menu>
 
   <ion-router-outlet id="main"></ion-router-outlet>
-  
+
 </template>
 <style>
 .my-custom-menu {
@@ -29,6 +27,21 @@
 </style>
 
 <script>
+const ioncomponents = [ 
+  'IonContent', 
+  'IonHeader', 
+  'IonItem', 
+  'IonList', 
+  'IonMenu', 
+  'IonRouterOutlet',
+  'IonTitle', 
+  'IonToolbar',
+  'menuController',
+  'IonIcon',
+  
+  'IonLabel',
+  ]
+  console.log( `${ioncomponents}` );
 import { 
   IonContent, 
   IonHeader, 
@@ -63,6 +76,7 @@ export default defineComponent({
     
   },
    setup() {
+      
     return {
       logInOutline
     }
@@ -76,5 +90,5 @@ export default defineComponent({
   }
 });
 
-console.log(this)
+
 </script>
