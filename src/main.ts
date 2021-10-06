@@ -24,11 +24,22 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 import store from './store'
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:80';
 
 const app = createApp(App).use(store)
   .use(IonicVue)
   .use(router);
 
-router.isReady().then(() => {
-  app.mount('#app');
-});
+
+
+
+
+  router.isReady().then(() => {
+    store.dispatch('auth/me').then( ()=>{
+      app.mount('#app');
+    } )
+  });
+

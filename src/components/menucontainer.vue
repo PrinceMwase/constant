@@ -45,6 +45,7 @@ const ioncomponents = [
   
   'IonLabel',
   ]
+  
   console.log( `${ioncomponents}` );
 import { 
   IonContent, 

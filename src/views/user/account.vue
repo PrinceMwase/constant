@@ -3,7 +3,7 @@
     <ion-content>
         <div id="container">
           <p>Welcome </p>
-          <strong > User Account  {{ user }} </strong>
+          <strong > User Account  {{ user.name }} </strong>
         </div>
     </ion-content>
   </ion-page>
@@ -11,33 +11,24 @@
 
 <script>
 import { IonContent, IonPage } from '@ionic/vue';
-import axios from 'axios';
+
+import { mapGetters } from 'vuex';
 
 
 export default {
+
+    computed: {
+      ...mapGetters({
+        authenticated: 'auth/authenticated',
+        user: 'auth/user',
+      })
+    },
+
     name : 'account',
-    data(){
-      return {
-        user: String
-      }
-    },
-    methods : {
-      async getUser () {
-          
-           await axios.get('http://localhost/api/user').then ( (response) =>{  this.user = response.data.name  })
-
-      },
-    
-
-    },
-    components: { IonContent, IonPage },
-    
-    created(){
-      this.getUser();
-      console.log( this.user );
-    }
-
    
+ 
+    components: { IonContent, IonPage },
+
 
 };
 </script>

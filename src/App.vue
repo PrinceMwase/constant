@@ -40,10 +40,6 @@ export default defineComponent({
     IonRouterOutlet,
     menucontainer,
     MainToolBarContainer
-    
-    
-    
-    
   }
 });
 </script>
