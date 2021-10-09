@@ -34,12 +34,13 @@
 
 <script lang="ts">
 import { IonButton, IonInput, IonItem, IonGrid, IonRow, IonCol }  from '@ionic/vue';
-import axios from 'axios';
+import { defineComponent } from '@vue/runtime-core';
+
 
 import { mapActions } from 'vuex';
 
 
-export default {
+export default defineComponent ({
   name: 'LoginContainer',
   data(){
     return {
@@ -76,7 +77,7 @@ export default {
   components:{
       IonButton, IonInput, IonItem, IonGrid, IonRow, IonCol 
   }
-}
+})
 </script>
 
 <style scoped>

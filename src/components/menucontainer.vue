@@ -13,10 +13,19 @@
           <ion-icon :icon="homeOutline" slot="start"></ion-icon>
           <ion-label>Home</ion-label>
         </ion-item>
-        <ion-item button  router-link="/login" router-direction="forward" >
-          <ion-icon :icon="logInOutline" slot="start"></ion-icon>
-          <ion-label>Sign In</ion-label>
-        </ion-item>
+        <template v-if="!authenticated">
+          <ion-item button  router-link="/login" router-direction="forward" >
+            <ion-icon :icon="logInOutline" slot="start"></ion-icon>
+            <ion-label>Sign In</ion-label>
+          </ion-item>
+        </template>
+        <template v-else>
+          <ion-item button @click="signOut"  router-direction="back" >
+            <ion-icon :icon="logOutOutline" slot="start"></ion-icon>
+            <ion-label>Sign Out </ion-label>
+          </ion-item>
+        </template>
+     
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -31,22 +40,8 @@
 </style>
 
 <script>
-const ioncomponents = [ 
-  'IonContent', 
-  'IonHeader', 
-  'IonItem', 
-  'IonList', 
-  'IonMenu', 
-  'IonRouterOutlet',
-  'IonTitle', 
-  'IonToolbar',
-  'menuController',
-  'IonIcon',
+
   
-  'IonLabel',
-  ]
-  
-  console.log( `${ioncomponents}` );
 import { 
   IonContent, 
   IonHeader, 
@@ -62,11 +57,18 @@ import {
   IonLabel
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { logInOutline, homeOutline } from 'ionicons/icons';
+import { logInOutline, homeOutline, logOutOutline } from 'ionicons/icons';
+import { mapActions, mapGetters } from 'vuex';
 
 export default defineComponent({
     name:'menucontainer',
-  components: {
+    computed: {
+      ...mapGetters({
+        authenticated : 'auth/authenticated',
+        user: 'auth/user',
+      })
+    },
+    components: {
     IonContent, 
     IonHeader, 
     IonItem, 
@@ -85,9 +87,19 @@ export default defineComponent({
     return {
       logInOutline,
       homeOutline,
+      logOutOutline
     }
   },
   methods: {
+    ...mapActions({
+      signOutAction: 'auth/signOut'
+    }),
+
+    async signOut(){
+      await this.signOutAction()
+
+      this.$router.replace( {name:'home'} )
+    },
    
     openCustom() {
       menuController.enable(true, 'custom');

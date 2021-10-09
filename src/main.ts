@@ -20,26 +20,31 @@ import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
+/* Tailwind import */ 
+import './tailwind/index.css'
+
 /* Theme variables */
 import './theme/variables.css';
 
 import store from './store'
 import axios from 'axios';
 
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:80';
+
 
 const app = createApp(App).use(store)
   .use(IonicVue)
   .use(router);
 
 
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:80';
 
 
-
-  router.isReady().then(() => {
+  
     store.dispatch('auth/me').then( ()=>{
-      app.mount('#app');
+      router.isReady().then(() => {
+        app.mount('#app');
+      });
     } )
-  });
+
 

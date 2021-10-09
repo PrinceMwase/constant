@@ -1,4 +1,5 @@
 <template>
+<ion-header translucent="true" fullscreen>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
@@ -21,10 +22,11 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  </ion-header>
 </template>
 
 <script>
-import { IonButton, IonButtons, IonIcon, IonToolbar } from "@ionic/vue";
+import { IonButton, IonButtons, IonIcon, IonToolbar, IonMenuButton } from "@ionic/vue";
 import {
     ellipsisHorizontal,
     ellipsisVertical,
@@ -41,7 +43,7 @@ export default defineComponent({
         IonButton,
         IonButtons,
         IonIcon,
-
+        IonMenuButton,
         IonToolbar,
     },
     setup() {
