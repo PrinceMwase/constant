@@ -5,9 +5,21 @@
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
-      </ion-button>
+
+      <template v-if="authenticated">
+        <ion-button>
+              <ion-thumbnail>
+                <ion-img class="rounded fit" :src='"http://localhost/storage/"+user.avatar'></ion-img>
+              </ion-thumbnail>
+        </ion-button>
+      </template>
+      <template v-else>
+        <ion-button>
+              <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
+        </ion-button>
+      </template>
+
+     
       <ion-button>
         <ion-icon slot="icon-only" :icon="search"></ion-icon>
       </ion-button>
@@ -36,9 +48,16 @@ import {
     star,
 } from "ionicons/icons";
 import { defineComponent } from "vue";
+import { mapActions, mapGetters } from 'vuex';
 
 export default defineComponent({
     name: "MainToolBarContainer",
+    computed: {
+      ...mapGetters({
+        authenticated : 'auth/authenticated',
+        user: 'auth/user',
+      })
+    },
     components: {
         IonButton,
         IonButtons,
