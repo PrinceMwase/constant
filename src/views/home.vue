@@ -1,19 +1,25 @@
 <template>
-  <div id="container">
-    <strong>{{ name }}</strong>
-    <p>Explore </p>
-  </div>
+  <ion-page>
+    <ion-content>
+        <div id="container">
+          <p>Welcome To </p>
+          <strong> sitolo </strong>
+        </div>
+    </ion-content>
+  </ion-page>
 </template>
 
-<script lang="ts">
+<script>
+import { IonContent, IonPage } from '@ionic/vue';
+import { defineComponent } from 'vue';
 
-export default {
-  name: 'ExploreContainer',
-  props: {
-    name: String
-  }
-}
+
+export default defineComponent({
+  name: 'HomePage',
+  components: { IonContent, IonPage }
+});
 </script>
+
 
 <style scoped>
 #container {
