@@ -2,6 +2,7 @@
   <ion-page>
     <ion-content>
         <HomeMainSliderContainer /> 
+        <ProductsContainer />
     </ion-content>
   </ion-page>
 </template>
@@ -10,11 +11,12 @@
 import { IonContent, IonPage } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import HomeMainSliderContainer from '@/components/home/HomeMainSliderContainer.vue';
+import ProductsContainer from '@/components/home/ProductsContainer.vue';
 
 
 export default defineComponent({
   name: 'HomePage',
-  components: { IonContent, IonPage, HomeMainSliderContainer }
+  components: { IonContent, IonPage, HomeMainSliderContainer, ProductsContainer }
 });
 </script>
 

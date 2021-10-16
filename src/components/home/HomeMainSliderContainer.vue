@@ -55,8 +55,7 @@
         
         await axios.get('/api/store').then( (response) => {
           this.stores = response.data;
-          console.log(  this.stores );
-
+          
         } )
 
       }
@@ -95,8 +94,8 @@
 <style>
 
 .swiper-container{
-  top: 9%;
-  /* position: relative; */
+ 
+  position: relative;
   /* height : 19%; */
   
 }
